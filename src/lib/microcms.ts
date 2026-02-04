@@ -29,3 +29,20 @@ export type BlogsResponse = {
   offset: number;
   limit: number;
 };
+
+export async function getBlogs(
+  limit: number = 10,
+  offset: number = 0,
+): Promise<BlogsResponse> {
+  return client.get<BlogsResponse>({
+    endpoint: "blogs",
+    queries: { limit, offset },
+  });
+}
+
+export async function getBlogById(id: string): Promise<Blog> {
+  return client.get<Blog>({
+    endpoint: "blogs",
+    contentId: id,
+  });
+}
