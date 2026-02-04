@@ -1,6 +1,6 @@
+import { NextResponse } from "next/server";
 import type { Blog } from "@/lib/microcms";
 import { client } from "@/lib/microcms";
-import { NextResponse } from "next/server";
 
 export async function GET(
   _: Request,
