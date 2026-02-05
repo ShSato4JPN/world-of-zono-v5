@@ -1,26 +1,4 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(tree:*)",
-      "Bash(git -C /Users/shsato4/ghq/github.com/ShSato4JPN/world-of-zono-v5 log --oneline -10)",
-      "Bash(find:*)",
-      "Bash(npx -y microcms-mcp-server@latest --help)",
-      "Bash(echo:*)",
-      "Bash(timeout 5 npx:*)",
-      "Bash(npm view:*)",
-      "mcp__microcms-document__fetch_general",
-      "mcp__serena__list_dir",
-      "mcp__microcms-document__list_documents",
-      "mcp__microcms-document__search_document",
-      "Bash(npm install:*)",
-      "Bash(npm run format:*)",
-      "Bash(npm run lint)",
-      "mcp__serena__check_onboarding_performed",
-      "Bash(npm run dev)",
-      "Bash(python3:*)",
-      "Bash(pip3 install:*)"
-    ]
-  },
   "enabledMcpjsonServers": [
     "sequential-thinking",
     "serena",
