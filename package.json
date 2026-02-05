@@ -10,9 +10,13 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@mantine/hooks": "^8.3.14",
     "@tailwindcss/typography": "^0.5.19",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.19",
+    "framer-motion": "^12.31.0",
+    "html-react-parser": "^5.2.16",
     "lucide-react": "^0.563.0",
     "microcms-js-sdk": "^3.2.0",
     "next": "16.1.6",
@@ -20,6 +24,12 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-intersection-observer": "^10.0.2",
+    "react-markdown": "^10.1.0",
+    "reading-time": "^1.5.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
