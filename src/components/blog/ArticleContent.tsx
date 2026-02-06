@@ -3,7 +3,9 @@
 import type { DOMNode, Element } from "html-react-parser";
 import parse, { domToReact } from "html-react-parser";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { generateSlug } from "@/lib/toc";
+import { ImagePreview } from "./ImagePreview";
 
 type Props = {
   content: string;
@@ -24,34 +26,77 @@ function getTextContent(node: DOMNode): string {
 }
 
 export function ArticleContent({ content }: Props) {
+  const [previewImage, setPreviewImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
+
+  const handleImageClick = (src: string, alt: string) => {
+    setPreviewImage({ src, alt });
+  };
+
+  const handleClosePreview = () => {
+    setPreviewImage(null);
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="article-content"
-    >
-      {parse(content, {
-        replace: (domNode) => {
-          if (!isElement(domNode)) return;
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="article-content"
+      >
+        {parse(content, {
+          replace: (domNode) => {
+            if (!isElement(domNode)) return;
 
-          const { name, children } = domNode;
+            const { name, attribs, children } = domNode;
 
-          if (name === "h2" || name === "h3" || name === "h4") {
-            const text = children
-              ? (children as DOMNode[]).map(getTextContent).join("")
-              : "";
-            const id = generateSlug(text);
-            const Tag = name;
+            if (name === "h2" || name === "h3" || name === "h4") {
+              const text = children
+                ? (children as DOMNode[]).map(getTextContent).join("")
+                : "";
+              const id = generateSlug(text);
+              const Tag = name;
 
-            return (
-              <Tag id={id}>
-                {children && domToReact(children as DOMNode[])}
-              </Tag>
-            );
-          }
-        },
-      })}
-    </motion.div>
+              return (
+                <Tag id={id}>
+                  {children && domToReact(children as DOMNode[])}
+                </Tag>
+              );
+            }
+
+            if (name === "img") {
+              const src = attribs?.src || "";
+              const alt = attribs?.alt || "";
+
+              return (
+                <img
+                  src={src}
+                  alt={alt}
+                  className="cursor-zoom-in hover:opacity-90 transition-opacity"
+                  onClick={() => handleImageClick(src, alt)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      handleImageClick(src, alt);
+                    }
+                  }}
+                  tabIndex={0}
+                  role="button"
+                />
+              );
+            }
+          },
+        })}
+      </motion.div>
+
+      <ImagePreview
+        src={previewImage?.src || ""}
+        alt={previewImage?.alt || ""}
+        isOpen={previewImage !== null}
+        onClose={handleClosePreview}
+      />
+    </>
   );
 }
