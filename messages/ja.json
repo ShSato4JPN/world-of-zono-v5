@@ -1,0 +1,36 @@
+{
+  "common": {
+    "siteName": "World of Zono"
+  },
+  "home": {
+    "title": "編集を始めるには page.tsx ファイルを編集してください。",
+    "description": "スタート地点や詳しい説明をお探しですか？<templates>テンプレート</templates>や<learning>ラーニング</learning>センターをご覧ください。",
+    "deploy": "デプロイ",
+    "documentation": "ドキュメント"
+  },
+  "blog": {
+    "title": "ブログ",
+    "description": "考え、アイデア、ストーリー。",
+    "backToBlog": "ブログに戻る",
+    "backToAllPosts": "すべての記事に戻る",
+    "minRead": "{minutes}分で読める",
+    "noPosts": "記事がありません",
+    "noPostsDescription": "まだ記事が公開されていません。後でまたお越しください。",
+    "notFound": "記事が見つかりません",
+    "prevPost": "前の記事",
+    "nextPost": "次の記事"
+  },
+  "category": {
+    "title": "カテゴリー: {name}",
+    "postsCount": "{count}件の記事",
+    "noCategory": "未分類"
+  },
+  "metadata": {
+    "homeTitle": "ホーム | World of Zono",
+    "homeDescription": "World of Zono - 個人ブログ",
+    "blogTitle": "ブログ | World of Zono",
+    "blogDescription": "最新のブログ記事を読む",
+    "categoryTitle": "{name} | カテゴリー | World of Zono",
+    "categoryDescription": "「{name}」カテゴリーの記事一覧"
+  }
+}

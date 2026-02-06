@@ -1,0 +1,36 @@
+{
+  "common": {
+    "siteName": "World of Zono"
+  },
+  "home": {
+    "title": "To get started, edit the page.tsx file.",
+    "description": "Looking for a starting point or more instructions? Head over to <templates>Templates</templates> or the <learning>Learning</learning> center.",
+    "deploy": "Deploy Now",
+    "documentation": "Documentation"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Thoughts, ideas, and stories.",
+    "backToBlog": "Back to Blog",
+    "backToAllPosts": "Back to all posts",
+    "minRead": "{minutes} min read",
+    "noPosts": "No posts yet",
+    "noPostsDescription": "No posts have been published yet. Check back later.",
+    "notFound": "Blog Post Not Found",
+    "prevPost": "Previous",
+    "nextPost": "Next"
+  },
+  "category": {
+    "title": "Category: {name}",
+    "postsCount": "{count} posts",
+    "noCategory": "Uncategorized"
+  },
+  "metadata": {
+    "homeTitle": "Home | World of Zono",
+    "homeDescription": "World of Zono - Personal Blog",
+    "blogTitle": "Blog | World of Zono",
+    "blogDescription": "Read the latest blog posts",
+    "categoryTitle": "{name} | Category | World of Zono",
+    "categoryDescription": "Posts in the '{name}' category"
+  }
+}
