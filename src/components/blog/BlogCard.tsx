@@ -22,9 +22,9 @@ function decodeHtmlEntities(text: string): string {
 }
 
 export function BlogCard({ blog }: BlogCardProps) {
-  const excerpt = decodeHtmlEntities(blog.content.replace(/<[^>]*>/g, ""))
-    .slice(0, 120)
-    .trim();
+  const excerpt = decodeHtmlEntities(
+    blog.content.replace(/<[^>]*>/g, ""),
+  ).trim();
 
   const publishedDate = new Date(blog.publishedAt).toLocaleDateString("ja-JP", {
     year: "numeric",
@@ -41,9 +41,8 @@ export function BlogCard({ blog }: BlogCardProps) {
         <h2 className="mt-2 text-xl font-semibold leading-8 tracking-tight text-black group-hover:text-zinc-700 dark:text-zinc-50 dark:group-hover:text-zinc-300">
           {blog.title}
         </h2>
-        <p className="mt-2 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-2 line-clamp-3 text-base leading-7 text-zinc-600 dark:text-zinc-400">
           {excerpt}
-          {blog.content.length > 120 && "..."}
         </p>
       </article>
     </Link>
