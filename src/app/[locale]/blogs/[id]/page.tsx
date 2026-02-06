@@ -69,7 +69,6 @@ export default async function BlogDetailPage({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations("blog");
-  const tCategory = await getTranslations("category");
 
   dayjs.locale(locale);
 
@@ -123,25 +122,20 @@ export default async function BlogDetailPage({ params }: Props) {
                 </h1>
 
                 {/* Categories */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {blog.categories && blog.categories.length > 0 ? (
-                    blog.categories.map((category) => (
+                {blog.category && blog.category.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {blog.category.map((cat) => (
                       <Link
-                        key={category.id}
-                        href={`/categories/${category.id}`}
+                        key={cat.id}
+                        href={`/categories/${cat.id}`}
                         className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
                       >
                         <Tag className="h-3.5 w-3.5" />
-                        {category.name}
+                        {cat.name}
                       </Link>
-                    ))
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-800">
-                      <Tag className="h-3.5 w-3.5" />
-                      {tCategory("noCategory")}
-                    </span>
-                  )}
-                </div>
+                    ))}
+                  </div>
+                )}
 
                 {/* Decorative line */}
                 <div className="mt-6 h-px w-full bg-linear-to-r from-zinc-200 via-zinc-300 to-transparent sm:mt-8 dark:from-zinc-800 dark:via-zinc-700" />

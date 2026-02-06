@@ -38,15 +38,15 @@ export function BlogCard({ blog }: BlogCardProps) {
         <time className="text-sm text-zinc-500 dark:text-zinc-500">
           {publishedDate}
         </time>
-        {blog.categories &&
-          blog.categories.length > 0 &&
-          blog.categories.map((category) => (
+        {blog.category &&
+          blog.category.length > 0 &&
+          blog.category.map((cat) => (
             <Link
-              key={category.id}
-              href={`/categories/${category.id}`}
+              key={cat.id}
+              href={`/categories/${cat.id}`}
               className="relative z-10 rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
             >
-              {category.name}
+              {cat.name}
             </Link>
           ))}
       </div>

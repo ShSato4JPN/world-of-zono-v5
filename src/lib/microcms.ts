@@ -43,7 +43,7 @@ export type Blog = {
   revisedAt: string;
   title: string;
   content: string;
-  categories?: Category[];
+  category?: Category[];
   eyecatch?: Eyecatch;
 };
 
@@ -95,7 +95,7 @@ export async function getBlogsByCategory(
     queries: {
       limit,
       offset,
-      filters: `categories[contains]${categoryId}`,
+      filters: `category[contains]${categoryId}`,
     },
   });
 }
