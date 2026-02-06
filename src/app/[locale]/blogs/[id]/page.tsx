@@ -127,19 +127,19 @@ export default async function BlogDetailPage({ params }: Props) {
               {/* Footer - Prev/Next Navigation */}
               <footer className="mt-12 border-t border-zinc-200 pt-6 sm:mt-16 sm:pt-8 dark:border-zinc-800">
                 <nav className="flex items-stretch justify-between gap-4">
-                  {/* Previous Post */}
+                  {/* Next Post (Left) */}
                   <div className="flex-1">
-                    {adjacentBlogs.prev ? (
+                    {adjacentBlogs.next ? (
                       <Link
-                        href={`/blogs/${adjacentBlogs.prev.id}`}
+                        href={`/blogs/${adjacentBlogs.next.id}`}
                         className="group flex h-full flex-col items-start gap-1 rounded-lg border border-zinc-200 p-4 transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
                       >
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-zinc-400 dark:text-zinc-500">
                           <ArrowLeft className="h-3 w-3 transition-transform group-hover:-translate-x-0.5" />
-                          {t("prevPost")}
+                          {t("nextPost")}
                         </span>
                         <span className="line-clamp-2 text-sm font-medium text-zinc-700 transition-colors group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-zinc-100">
-                          {adjacentBlogs.prev.title}
+                          {adjacentBlogs.next.title}
                         </span>
                       </Link>
                     ) : (
@@ -147,19 +147,19 @@ export default async function BlogDetailPage({ params }: Props) {
                     )}
                   </div>
 
-                  {/* Next Post */}
+                  {/* Previous Post (Right) */}
                   <div className="flex-1">
-                    {adjacentBlogs.next ? (
+                    {adjacentBlogs.prev ? (
                       <Link
-                        href={`/blogs/${adjacentBlogs.next.id}`}
+                        href={`/blogs/${adjacentBlogs.prev.id}`}
                         className="group flex h-full flex-col items-end gap-1 rounded-lg border border-zinc-200 p-4 text-right transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:border-zinc-700 dark:hover:bg-zinc-900"
                       >
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-zinc-400 dark:text-zinc-500">
-                          {t("nextPost")}
+                          {t("prevPost")}
                           <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                         </span>
                         <span className="line-clamp-2 text-sm font-medium text-zinc-700 transition-colors group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-zinc-100">
-                          {adjacentBlogs.next.title}
+                          {adjacentBlogs.prev.title}
                         </span>
                       </Link>
                     ) : (
