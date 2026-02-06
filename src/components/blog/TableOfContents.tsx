@@ -1,7 +1,7 @@
 "use client";
 
-import type { TocItem } from "@/lib/toc";
 import { useScrollSpy } from "@mantine/hooks";
+import type { TocItem } from "@/lib/toc";
 
 type Props = {
   items: TocItem[];

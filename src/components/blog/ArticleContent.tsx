@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import type { DOMNode, Element } from "html-react-parser";
 import parse, { domToReact } from "html-react-parser";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { generateSlug } from "@/lib/toc";
 import { ImagePreview } from "./ImagePreview";
@@ -72,19 +72,18 @@ export function ArticleContent({ content }: Props) {
               const alt = attribs?.alt || "";
 
               return (
-                <img
-                  src={src}
-                  alt={alt}
-                  className="cursor-zoom-in hover:opacity-90 transition-opacity"
+                <button
+                  type="button"
+                  className="block cursor-zoom-in"
                   onClick={() => handleImageClick(src, alt)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      handleImageClick(src, alt);
-                    }
-                  }}
-                  tabIndex={0}
-                  role="button"
-                />
+                >
+                  {/* biome-ignore lint/performance/noImgElement: CMS dynamic images */}
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="hover:opacity-90 transition-opacity"
+                  />
+                </button>
               );
             }
           },

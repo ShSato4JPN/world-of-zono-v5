@@ -41,10 +41,9 @@ export default async function AboutPage({ params }: Props) {
       <main className="min-h-screen w-full max-w-3xl bg-white px-8 py-24 sm:px-16 sm:py-32 dark:bg-black">
         {/* Profile Section */}
         <section className="mb-16 flex flex-col items-center text-center">
-          {/* TODO: 画像を差し替えてください */}
           <div className="relative mb-6 h-32 w-32 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
             <Image
-              src="/profile.png"
+              src="/profile.svg"
               alt={t("name")}
               fill
               className="object-cover"
@@ -65,7 +64,6 @@ export default async function AboutPage({ params }: Props) {
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             {t("introTitle")}
           </h2>
-          {/* TODO: 自己紹介文を書き換えてください */}
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             {t("introText")}
           </p>
@@ -76,7 +74,6 @@ export default async function AboutPage({ params }: Props) {
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             {t("skillsTitle")}
           </h2>
-          {/* TODO: スキルを更新してください */}
           <div className="flex flex-wrap gap-2">
             {["TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS"].map(
               (skill) => (
@@ -96,7 +93,6 @@ export default async function AboutPage({ params }: Props) {
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             {t("careerTitle")}
           </h2>
-          {/* TODO: 経歴を更新してください */}
           <div className="space-y-4">
             <div className="border-l-2 border-zinc-200 pl-4 dark:border-zinc-700">
               <p className="text-sm text-zinc-500 dark:text-zinc-500">
@@ -128,7 +124,6 @@ export default async function AboutPage({ params }: Props) {
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             {t("contactTitle")}
           </h2>
-          {/* TODO: SNSリンクを更新してください */}
           <div className="flex gap-4">
             <a
               href="https://github.com/"

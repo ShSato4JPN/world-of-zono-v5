@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect } from "react";
 import { X } from "lucide-react";
+import { useCallback, useEffect } from "react";
 
 type Props = {
   src: string;
@@ -51,16 +51,20 @@ export function ImagePreview({ src, alt, isOpen, onClose }: Props) {
           >
             <X className="w-6 h-6" />
           </button>
-          <motion.img
+          <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            src={src}
-            alt={alt}
-            className="max-h-[90vh] max-w-[90vw] object-contain cursor-default"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            {/* biome-ignore lint/performance/noImgElement: CMS dynamic images */}
+            <img
+              src={src}
+              alt={alt}
+              className="max-h-[90vh] max-w-[90vw] object-contain cursor-default"
+            />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
