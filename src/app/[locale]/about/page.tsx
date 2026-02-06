@@ -43,7 +43,7 @@ export default async function AboutPage({ params }: Props) {
         <section className="mb-16 flex flex-col items-center text-center">
           <div className="relative mb-6 h-32 w-32 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
             <Image
-              src="/profile.svg"
+              src="/zono.jpeg"
               alt={t("name")}
               fill
               className="object-cover"
