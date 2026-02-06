@@ -5,9 +5,24 @@ type BlogCardProps = {
   blog: Blog;
 };
 
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#x([0-9A-Fa-f]+);/g, (_, hex) =>
+      String.fromCharCode(Number.parseInt(hex, 16)),
+    )
+    .replace(/&#(\d+);/g, (_, dec) =>
+      String.fromCharCode(Number.parseInt(dec, 10)),
+    );
+}
+
 export function BlogCard({ blog }: BlogCardProps) {
-  const excerpt = blog.content
-    .replace(/<[^>]*>/g, "")
+  const excerpt = decodeHtmlEntities(blog.content.replace(/<[^>]*>/g, ""))
     .slice(0, 120)
     .trim();
 
