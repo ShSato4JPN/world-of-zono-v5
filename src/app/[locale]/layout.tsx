@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { VibeCodingBanner } from "@/components/VibeCodingBanner";
 import { routing } from "@/i18n/routing";
 
 type Props = {
@@ -33,20 +33,19 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <>
-      <NextIntlClientProvider messages={messages}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="fixed top-4 right-4 z-50">
-            <ThemeToggle />
-          </div>
-          {children}
-        </ThemeProvider>
-      </NextIntlClientProvider>
-    </>
+    <NextIntlClientProvider messages={messages}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <div className="fixed top-4 right-4 z-50">
+          <ThemeToggle />
+        </div>
+        <VibeCodingBanner />
+        {children}
+      </ThemeProvider>
+    </NextIntlClientProvider>
   );
 }

@@ -32,5 +32,9 @@
     "blogDescription": "最新のブログ記事を読む",
     "categoryTitle": "{name} | カテゴリー | World of Zono",
     "categoryDescription": "「{name}」カテゴリーの記事一覧"
+  },
+  "banner": {
+    "vibeCoding": "このサイトは勉強目的で Vibe Coding により作成されました。",
+    "close": "閉じる"
   }
 }

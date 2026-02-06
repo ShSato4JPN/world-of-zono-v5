@@ -32,5 +32,9 @@
     "blogDescription": "Read the latest blog posts",
     "categoryTitle": "{name} | Category | World of Zono",
     "categoryDescription": "Posts in the '{name}' category"
+  },
+  "banner": {
+    "vibeCoding": "This site was created with Vibe Coding for learning purposes.",
+    "close": "Close"
   }
 }
