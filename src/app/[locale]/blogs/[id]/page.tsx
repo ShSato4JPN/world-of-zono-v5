@@ -122,16 +122,19 @@ export default async function BlogDetailPage({ params }: Props) {
                   {blog.title}
                 </h1>
 
-                {/* Category */}
-                <div className="mt-4">
-                  {blog.category ? (
-                    <Link
-                      href={`/categories/${blog.category.id}`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
-                    >
-                      <Tag className="h-3.5 w-3.5" />
-                      {blog.category.name}
-                    </Link>
+                {/* Categories */}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {blog.categories && blog.categories.length > 0 ? (
+                    blog.categories.map((category) => (
+                      <Link
+                        key={category.id}
+                        href={`/categories/${category.id}`}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                      >
+                        <Tag className="h-3.5 w-3.5" />
+                        {category.name}
+                      </Link>
+                    ))
                   ) : (
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-800">
                       <Tag className="h-3.5 w-3.5" />

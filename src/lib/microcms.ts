@@ -29,6 +29,12 @@ export type CategoriesResponse = {
   limit: number;
 };
 
+export type Eyecatch = {
+  url: string;
+  width: number;
+  height: number;
+};
+
 export type Blog = {
   id: string;
   createdAt: string;
@@ -37,7 +43,8 @@ export type Blog = {
   revisedAt: string;
   title: string;
   content: string;
-  category?: Category;
+  categories?: Category[];
+  eyecatch?: Eyecatch;
 };
 
 export type BlogsResponse = {
@@ -88,7 +95,7 @@ export async function getBlogsByCategory(
     queries: {
       limit,
       offset,
-      filters: `category[equals]${categoryId}`,
+      filters: `categories[contains]${categoryId}`,
     },
   });
 }
