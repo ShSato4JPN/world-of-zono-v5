@@ -1,44 +1,50 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスを提供します。
 
-## Project Overview
+## プロジェクト概要
 
-This is **world-of-zono-v5**, a Next.js 16 application using the App Router architecture with React 19 and TypeScript.
+**world-of-zono-v5** は、Next.js 16 の App Router アーキテクチャを使用した、React 19 と TypeScript によるアプリケーションです。
 
-## Commands
+## コマンド
 
 ```bash
-# Development
-npm run dev          # Start dev server at http://localhost:3000
+# 開発
+npm run dev          # 開発サーバー起動 (http://localhost:3000)
 
-# Build & Production
-npm run build        # Production build
-npm run start        # Start production server
+# ビルド・本番
+npm run build        # 本番ビルド
+npm run start        # 本番サーバー起動
 
-# Code Quality
-npm run lint         # Run Biome linter
-npm run format       # Auto-format code with Biome
+# コード品質
+npm run lint         # Biome リンター実行
+npm run format       # Biome で自動フォーマット
 ```
 
-## Architecture
+## アーキテクチャ
 
-### Tech Stack
-- **Framework:** Next.js 16 with App Router (`src/app/`)
-- **React:** v19 with React Compiler enabled for automatic optimizations
-- **Styling:** Tailwind CSS v4 with dark mode support via CSS custom properties
-- **Linting/Formatting:** Biome (not ESLint/Prettier)
-- **CMS:** microCMS integration configured via MCP
+### 技術スタック
 
-### Directory Structure
-- `src/app/` - Next.js App Router pages and layouts
-- `public/` - Static assets
+- **フレームワーク:** Next.js 16 + App Router (`src/app/`)
+- **React:** v19、React Compiler 有効（自動最適化）
+- **スタイリング:** Tailwind CSS v4、ダークモード対応（CSS カスタムプロパティ）
+- **リンター/フォーマッター:** Biome（ESLint/Prettier は使用しない）
+- **CMS:** microCMS（MCP 経由で設定）
 
-### Key Configuration
-- **TypeScript:** Strict mode enabled, path alias `@/*` maps to `./src/*`
-- **React Compiler:** Enabled in `next.config.ts` for automatic component optimization
-- **Biome:** Configured with Next.js and React recommended rules, 2-space indentation
+### ディレクトリ構成
 
-## Code Style
+- `src/app/` - Next.js App Router のページとレイアウト
+- `src/components/` - 再利用可能なコンポーネント
+- `src/lib/` - ユーティリティ関数
+- `src/hooks/` - カスタムフック
+- `public/` - 静的アセット
 
-This project uses Biome instead of ESLint/Prettier. Run `npm run format` before committing. Biome handles both linting and formatting in one tool.
+### 主要な設定
+
+- **TypeScript:** Strict モード有効、パスエイリアス `@/*` → `./src/*`
+- **React Compiler:** `next.config.ts` で有効化（コンポーネントの自動最適化）
+- **Biome:** Next.js / React 推奨ルール、インデント 2 スペース
+
+## コードスタイル
+
+このプロジェクトは ESLint/Prettier ではなく Biome を使用しています。コミット前に `npm run format` を実行してください。Biome はリンターとフォーマッターを 1 つのツールで提供します。
