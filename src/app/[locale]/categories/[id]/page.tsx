@@ -21,9 +21,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const category = await getCategoryById(id);
     const t = await getTranslations({ locale, namespace: "metadata" });
 
+    const title = t("categoryTitle", { name: category.name });
+    const description = t("categoryDescription", { name: category.name });
+
     return {
-      title: t("categoryTitle", { name: category.name }),
-      description: t("categoryDescription", { name: category.name }),
+      title,
+      description,
+      openGraph: {
+        type: "website",
+        title,
+        description,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+      },
     };
   } catch {
     return {

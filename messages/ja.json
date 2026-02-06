@@ -2,6 +2,20 @@
   "common": {
     "siteName": "World of Zono"
   },
+  "about": {
+    "name": "Zono",
+    "title": "ソフトウェアエンジニア",
+    "introTitle": "自己紹介",
+    "introText": "TODO: こんにちは！Zonoです。Web開発を中心に活動しているソフトウェアエンジニアです。TypeScriptやReactを使ったフロントエンド開発が得意です。このブログでは、技術的な知見や日々の学びを発信しています。",
+    "skillsTitle": "スキル",
+    "careerTitle": "経歴",
+    "present": "現在",
+    "careerItem1Title": "TODO: 株式会社〇〇 - ソフトウェアエンジニア",
+    "careerItem1Description": "TODO: Webアプリケーション開発に従事。フロントエンドからバックエンドまで幅広く担当。",
+    "careerItem2Title": "TODO: 株式会社△△ - エンジニア",
+    "careerItem2Description": "TODO: システム開発・運用保守を担当。",
+    "contactTitle": "連絡先"
+  },
   "home": {
     "title": "編集を始めるには page.tsx ファイルを編集してください。",
     "description": "スタート地点や詳しい説明をお探しですか？<templates>テンプレート</templates>や<learning>ラーニング</learning>センターをご覧ください。",
@@ -31,7 +45,9 @@
     "blogTitle": "ブログ | World of Zono",
     "blogDescription": "最新のブログ記事を読む",
     "categoryTitle": "{name} | カテゴリー | World of Zono",
-    "categoryDescription": "「{name}」カテゴリーの記事一覧"
+    "categoryDescription": "「{name}」カテゴリーの記事一覧",
+    "aboutTitle": "自己紹介",
+    "aboutDescription": "Zonoについて - ソフトウェアエンジニア"
   },
   "banner": {
     "vibeCoding": "このサイトは勉強目的で Vibe Coding により作成されました。",

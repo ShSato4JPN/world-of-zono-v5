@@ -16,9 +16,37 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://world-of-zono.com";
+
 export const metadata: Metadata = {
-  title: "World of Zono",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "World of Zono",
+    template: "%s | World of Zono",
+  },
   description: "World of Zono - Personal Blog",
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    alternateLocale: "en_US",
+    siteName: "World of Zono",
+    title: "World of Zono",
+    description: "World of Zono - Personal Blog",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "World of Zono",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "World of Zono",
+    description: "World of Zono - Personal Blog",
+    images: ["/og-image.png"],
+  },
 };
 
 export default async function LocaleLayout({ children, params }: Props) {

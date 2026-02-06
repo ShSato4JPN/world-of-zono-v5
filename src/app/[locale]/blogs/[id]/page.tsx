@@ -22,9 +22,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   try {
     const blog = await getBlogById(id);
+    const description = blog.content.replace(/<[^>]*>/g, "").slice(0, 160);
+    const title = blog.title;
+
     return {
-      title: `${blog.title} | Blog | World of Zono`,
-      description: blog.content.replace(/<[^>]*>/g, "").slice(0, 160),
+      title: `${title} | Blog`,
+      description,
+      openGraph: {
+        type: "article",
+        title,
+        description,
+        publishedTime: blog.publishedAt,
+        modifiedTime: blog.updatedAt,
+        images: blog.eyecatch
+          ? [
+              {
+                url: blog.eyecatch.url,
+                width: blog.eyecatch.width,
+                height: blog.eyecatch.height,
+                alt: title,
+              },
+            ]
+          : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: blog.eyecatch ? [blog.eyecatch.url] : undefined,
+      },
     };
   } catch {
     return {

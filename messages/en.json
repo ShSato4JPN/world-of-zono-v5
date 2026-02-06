@@ -2,6 +2,20 @@
   "common": {
     "siteName": "World of Zono"
   },
+  "about": {
+    "name": "Zono",
+    "title": "Software Engineer",
+    "introTitle": "About Me",
+    "introText": "TODO: Hello! I'm Zono, a software engineer focused on web development. I specialize in frontend development using TypeScript and React. In this blog, I share technical insights and daily learnings.",
+    "skillsTitle": "Skills",
+    "careerTitle": "Career",
+    "present": "Present",
+    "careerItem1Title": "TODO: Company A - Software Engineer",
+    "careerItem1Description": "TODO: Engaged in web application development. Responsible for both frontend and backend development.",
+    "careerItem2Title": "TODO: Company B - Engineer",
+    "careerItem2Description": "TODO: Responsible for system development and maintenance.",
+    "contactTitle": "Contact"
+  },
   "home": {
     "title": "To get started, edit the page.tsx file.",
     "description": "Looking for a starting point or more instructions? Head over to <templates>Templates</templates> or the <learning>Learning</learning> center.",
@@ -31,7 +45,9 @@
     "blogTitle": "Blog | World of Zono",
     "blogDescription": "Read the latest blog posts",
     "categoryTitle": "{name} | Category | World of Zono",
-    "categoryDescription": "Posts in the '{name}' category"
+    "categoryDescription": "Posts in the '{name}' category",
+    "aboutTitle": "About",
+    "aboutDescription": "About Zono - Software Engineer"
   },
   "banner": {
     "vibeCoding": "This site was created with Vibe Coding for learning purposes.",
