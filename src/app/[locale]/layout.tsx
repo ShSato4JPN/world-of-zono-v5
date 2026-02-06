@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { QueryProvider } from "@/components/QueryProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { routing } from "@/i18n/routing";
 
 type Props = {
@@ -71,9 +71,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <div className="fixed top-4 right-4 z-50">
-              <ThemeToggle />
-            </div>
+            <Header />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

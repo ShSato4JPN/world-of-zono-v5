@@ -2,6 +2,13 @@
   "common": {
     "siteName": "World of Zono"
   },
+  "nav": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "about": "自己紹介",
+    "menu": "メニュー",
+    "close": "閉じる"
+  },
   "about": {
     "name": "Zono",
     "title": "ソフトウェアエンジニア",

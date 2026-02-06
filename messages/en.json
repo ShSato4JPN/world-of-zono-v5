@@ -2,6 +2,13 @@
   "common": {
     "siteName": "World of Zono"
   },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "menu": "Menu",
+    "close": "Close"
+  },
   "about": {
     "name": "Zono",
     "title": "Software Engineer",
