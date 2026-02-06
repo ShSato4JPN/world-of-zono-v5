@@ -1,17 +1,22 @@
-import { createClient } from "microcms-js-sdk";
+const MICROCMS_SERVICE_DOMAIN = process.env.MICROCMS_SERVICE_DOMAIN;
+const MICROCMS_API_KEY = process.env.MICROCMS_API_KEY;
 
-if (!process.env.MICROCMS_SERVICE_DOMAIN) {
+if (!MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
 
-if (!process.env.MICROCMS_API_KEY) {
+if (!MICROCMS_API_KEY) {
   throw new Error("MICROCMS_API_KEY is required");
 }
 
-export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: process.env.MICROCMS_API_KEY,
-});
+const baseUrl = `https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1`;
+
+const headers = {
+  "X-MICROCMS-API-KEY": MICROCMS_API_KEY,
+};
+
+// Cache revalidation time in seconds
+const CACHE_REVALIDATE = 60; // 1 minute
 
 export type Category = {
   id: string;
@@ -58,31 +63,55 @@ export async function getBlogs(
   limit: number = 10,
   offset: number = 0,
 ): Promise<BlogsResponse> {
-  return client.get<BlogsResponse>({
-    endpoint: "blogs",
-    queries: { limit, offset },
+  const res = await fetch(`${baseUrl}/blogs?limit=${limit}&offset=${offset}`, {
+    headers,
+    next: { revalidate: CACHE_REVALIDATE },
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch blogs");
+  }
+
+  return res.json();
 }
 
 export async function getBlogById(id: string): Promise<Blog> {
-  return client.get<Blog>({
-    endpoint: "blogs",
-    contentId: id,
+  const res = await fetch(`${baseUrl}/blogs/${id}`, {
+    headers,
+    next: { revalidate: CACHE_REVALIDATE },
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch blog");
+  }
+
+  return res.json();
 }
 
 export async function getCategories(): Promise<CategoriesResponse> {
-  return client.get<CategoriesResponse>({
-    endpoint: "categories",
-    queries: { limit: 100 },
+  const res = await fetch(`${baseUrl}/categories?limit=100`, {
+    headers,
+    next: { revalidate: CACHE_REVALIDATE * 5 }, // Categories change less frequently
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
+
+  return res.json();
 }
 
 export async function getCategoryById(id: string): Promise<Category> {
-  return client.get<Category>({
-    endpoint: "categories",
-    contentId: id,
+  const res = await fetch(`${baseUrl}/categories/${id}`, {
+    headers,
+    next: { revalidate: CACHE_REVALIDATE * 5 },
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch category");
+  }
+
+  return res.json();
 }
 
 export async function getBlogsByCategory(
@@ -90,14 +119,19 @@ export async function getBlogsByCategory(
   limit: number = 10,
   offset: number = 0,
 ): Promise<BlogsResponse> {
-  return client.get<BlogsResponse>({
-    endpoint: "blogs",
-    queries: {
-      limit,
-      offset,
-      filters: `category[contains]${categoryId}`,
+  const res = await fetch(
+    `${baseUrl}/blogs?limit=${limit}&offset=${offset}&filters=category[contains]${categoryId}`,
+    {
+      headers,
+      next: { revalidate: CACHE_REVALIDATE },
     },
-  });
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch blogs by category");
+  }
+
+  return res.json();
 }
 
 export type AdjacentBlogs = {

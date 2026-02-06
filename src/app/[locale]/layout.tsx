@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/Footer";
+import { QueryProvider } from "@/components/QueryProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { routing } from "@/i18n/routing";
@@ -61,21 +62,23 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <div className="flex min-h-screen flex-col">
-          <div className="fixed top-4 right-4 z-50">
-            <ThemeToggle />
+    <QueryProvider>
+      <NextIntlClientProvider messages={messages}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex min-h-screen flex-col">
+            <div className="fixed top-4 right-4 z-50">
+              <ThemeToggle />
+            </div>
+            <main className="flex-1">{children}</main>
+            <Footer />
           </div>
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-      </ThemeProvider>
-    </NextIntlClientProvider>
+        </ThemeProvider>
+      </NextIntlClientProvider>
+    </QueryProvider>
   );
 }
