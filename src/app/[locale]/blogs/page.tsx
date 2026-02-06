@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { BlogList } from "@/components/blog/BlogList";
+import { InfiniteBlogList } from "@/components/blog/InfiniteBlogList";
 import { getBlogs } from "@/lib/microcms";
 
 type Props = {
@@ -35,7 +35,7 @@ export default async function BlogsPage({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations("blog");
-  const { contents: blogs } = await getBlogs();
+  const { contents: blogs, totalCount } = await getBlogs();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -49,7 +49,7 @@ export default async function BlogsPage({ params }: Props) {
           </p>
         </header>
 
-        <BlogList blogs={blogs} />
+        <InfiniteBlogList initialBlogs={blogs} totalCount={totalCount} />
       </main>
     </div>
   );

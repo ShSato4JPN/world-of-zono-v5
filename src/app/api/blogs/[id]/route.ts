@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import type { Blog } from "@/lib/microcms";
-import { client } from "@/lib/microcms";
+import { getBlogById } from "@/lib/microcms";
 
 export async function GET(
   _: Request,
@@ -9,11 +8,7 @@ export async function GET(
   const { id } = await params;
 
   try {
-    const data = await client.get<Blog>({
-      endpoint: "blogs",
-      contentId: id,
-    });
-
+    const data = await getBlogById(id);
     return NextResponse.json(data);
   } catch (error) {
     console.error("Failed to fetch blog:", error);
