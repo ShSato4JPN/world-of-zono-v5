@@ -35,9 +35,16 @@ export function BlogCard({ blog }: BlogCardProps) {
   return (
     <Link href={`/blogs/${blog.id}`} className="group block">
       <article className="rounded-lg border border-zinc-200 p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700">
-        <time className="text-sm text-zinc-500 dark:text-zinc-500">
-          {publishedDate}
-        </time>
+        <div className="flex items-center gap-3">
+          <time className="text-sm text-zinc-500 dark:text-zinc-500">
+            {publishedDate}
+          </time>
+          {blog.category && (
+            <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
+              {blog.category.name}
+            </span>
+          )}
+        </div>
         <h2 className="mt-2 text-xl font-semibold leading-8 tracking-tight text-black group-hover:text-zinc-700 dark:text-zinc-50 dark:group-hover:text-zinc-300">
           {blog.title}
         </h2>

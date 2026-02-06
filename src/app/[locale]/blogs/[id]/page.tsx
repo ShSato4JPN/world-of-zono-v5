@@ -90,25 +90,29 @@ export default async function BlogDetailPage({ params }: Props) {
                     <Clock className="h-4 w-4" />
                     {t("minRead", { minutes: readingTimeText })}
                   </span>
-                  {blog.category ? (
-                    <Link
-                      href={`/categories/${blog.category.id}`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-0.5 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
-                    >
-                      <Tag className="h-3.5 w-3.5" />
-                      {blog.category.name}
-                    </Link>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5">
-                      <Tag className="h-3.5 w-3.5" />
-                      {tCategory("noCategory")}
-                    </span>
-                  )}
                 </div>
 
                 <h1 className="text-xl font-bold leading-snug tracking-tight text-zinc-900 sm:text-2xl md:text-3xl dark:text-zinc-50">
                   {blog.title}
                 </h1>
+
+                {/* Category */}
+                <div className="mt-4">
+                  {blog.category ? (
+                    <Link
+                      href={`/categories/${blog.category.id}`}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                    >
+                      <Tag className="h-3.5 w-3.5" />
+                      {blog.category.name}
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-800">
+                      <Tag className="h-3.5 w-3.5" />
+                      {tCategory("noCategory")}
+                    </span>
+                  )}
+                </div>
 
                 {/* Decorative line */}
                 <div className="mt-6 h-px w-full bg-linear-to-r from-zinc-200 via-zinc-300 to-transparent sm:mt-8 dark:from-zinc-800 dark:via-zinc-700" />
