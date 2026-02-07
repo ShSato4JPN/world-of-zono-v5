@@ -6,6 +6,7 @@
     "home": "Home",
     "blog": "Blog",
     "about": "About",
+    "aiDevelopment": "AI Dev",
     "menu": "Menu",
     "close": "Close"
   },
@@ -43,6 +44,22 @@
     "searchPlaceholder": "Search articles...",
     "searchNoResults": "No results found"
   },
+  "aiDevelopment": {
+    "title": "About AI-Driven Development",
+    "subtitle": "This site is built using AI-driven development as part of learning AI technologies.",
+    "whatIsTitle": "What is AI-Driven Development?",
+    "whatIsText": "AI-driven development is an approach where developers design and implement software through conversation with an AI assistant. The developer gives instructions to the AI, and they collaboratively generate, review, and refactor code. On this site, every phase from design to coding and debugging is carried out in collaboration with AI.",
+    "whyTitle": "Why AI-Driven Development?",
+    "whyText": "The evolution of AI technology is transforming how software is developed. To learn about this shift through hands-on experience, I'm exploring the workflows, possibilities, and challenges of AI-driven development through real product development.",
+    "toolsTitle": "Technologies Used",
+    "howTitle": "Development Workflow",
+    "how": {
+      "step1": "The developer describes the desired feature or requirements to the AI in natural language",
+      "step2": "The AI generates code, and the developer reviews and provides feedback",
+      "step3": "Through iterative dialogue, the feature is refined and completed"
+    },
+    "disclaimer": "The code for this site was generated in collaboration with an AI assistant. This is a project aimed at AI learning and experimentation."
+  },
   "category": {
     "title": "Category: {name}",
     "postsCount": "{count} posts",
@@ -56,7 +73,9 @@
     "categoryTitle": "{name} | Category | World of Zono",
     "categoryDescription": "Posts in the '{name}' category",
     "aboutTitle": "About",
-    "aboutDescription": "About Zono - Software Engineer"
+    "aboutDescription": "About Zono - Software Engineer",
+    "aiDevelopmentTitle": "AI-Driven Development",
+    "aiDevelopmentDescription": "About AI-driven development of this site"
   },
   "banner": {
     "vibeCoding": "This site was created with Vibe Coding for learning purposes.",

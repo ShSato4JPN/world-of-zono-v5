@@ -10,6 +10,7 @@ const navItems = [
   { href: "/", labelKey: "home" },
   { href: "/blogs", labelKey: "blog" },
   { href: "/about", labelKey: "about" },
+  { href: "/ai-development", labelKey: "aiDevelopment" },
 ] as const;
 
 export function Header() {

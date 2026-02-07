@@ -6,6 +6,7 @@
     "home": "ホーム",
     "blog": "ブログ",
     "about": "自己紹介",
+    "aiDevelopment": "AI開発",
     "menu": "メニュー",
     "close": "閉じる"
   },
@@ -43,6 +44,22 @@
     "searchPlaceholder": "記事を検索...",
     "searchNoResults": "検索結果が見つかりませんでした"
   },
+  "aiDevelopment": {
+    "title": "AI駆動開発について",
+    "subtitle": "このサイトは、AI学習の一環としてAI駆動開発で構築されています。",
+    "whatIsTitle": "AI駆動開発とは？",
+    "whatIsText": "AI駆動開発とは、AIアシスタントと対話しながらソフトウェアを設計・実装する開発手法です。開発者がAIに指示を出し、コードの生成、レビュー、リファクタリングを協働で行います。本サイトでは、設計からコーディング、デバッグまでの全工程をAIとの協働で進めています。",
+    "whyTitle": "なぜAI駆動開発？",
+    "whyText": "AI技術の進化により、ソフトウェア開発のあり方が大きく変わりつつあります。この変化を体験的に学ぶため、実際のプロダクト開発を通じてAI駆動開発のワークフローや可能性、そして課題を探求しています。",
+    "toolsTitle": "使用している技術",
+    "howTitle": "開発の流れ",
+    "how": {
+      "step1": "開発者が実装したい機能や要件をAIに自然言語で伝える",
+      "step2": "AIがコードを生成し、開発者がレビュー・フィードバックを行う",
+      "step3": "対話を繰り返しながら、機能を完成させていく"
+    },
+    "disclaimer": "このサイトのコードはAIアシスタントとの協働により生成されています。AI学習と実験を目的としたプロジェクトです。"
+  },
   "category": {
     "title": "カテゴリー: {name}",
     "postsCount": "{count}件の記事",
@@ -56,7 +73,9 @@
     "categoryTitle": "{name} | カテゴリー | World of Zono",
     "categoryDescription": "「{name}」カテゴリーの記事一覧",
     "aboutTitle": "自己紹介",
-    "aboutDescription": "Zonoについて - ソフトウェアエンジニア"
+    "aboutDescription": "Zonoについて - ソフトウェアエンジニア",
+    "aiDevelopmentTitle": "AI駆動開発について",
+    "aiDevelopmentDescription": "このサイトのAI駆動開発について"
   },
   "banner": {
     "vibeCoding": "このサイトは勉強目的で Vibe Coding により作成されました。",
