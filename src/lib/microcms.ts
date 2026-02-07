@@ -62,8 +62,16 @@ export type BlogsResponse = {
 export async function getBlogs(
   limit: number = 10,
   offset: number = 0,
+  q?: string,
 ): Promise<BlogsResponse> {
-  const res = await fetch(`${baseUrl}/blogs?limit=${limit}&offset=${offset}`, {
+  const url = new URL(`${baseUrl}/blogs`);
+  url.searchParams.set("limit", String(limit));
+  url.searchParams.set("offset", String(offset));
+  if (q) {
+    url.searchParams.set("q", q);
+  }
+
+  const res = await fetch(url.toString(), {
     headers,
     next: { revalidate: CACHE_REVALIDATE },
   });

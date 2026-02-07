@@ -39,7 +39,9 @@
     "noPostsDescription": "No posts have been published yet. Check back later.",
     "notFound": "Blog Post Not Found",
     "prevPost": "Previous",
-    "nextPost": "Next"
+    "nextPost": "Next",
+    "searchPlaceholder": "Search articles...",
+    "searchNoResults": "No results found"
   },
   "category": {
     "title": "Category: {name}",

@@ -6,9 +6,10 @@ export async function GET(request: Request) {
 
   const limit = Number(searchParams.get("limit") ?? "10");
   const offset = Number(searchParams.get("offset") ?? "0");
+  const q = searchParams.get("q") ?? undefined;
 
   try {
-    const data = await getBlogs(limit, offset);
+    const data = await getBlogs(limit, offset, q);
     return NextResponse.json(data);
   } catch (error) {
     console.error("Failed to fetch blogs:", error);

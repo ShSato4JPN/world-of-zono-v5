@@ -39,7 +39,9 @@
     "noPostsDescription": "まだ記事が公開されていません。後でまたお越しください。",
     "notFound": "記事が見つかりません",
     "prevPost": "前の記事",
-    "nextPost": "次の記事"
+    "nextPost": "次の記事",
+    "searchPlaceholder": "記事を検索...",
+    "searchNoResults": "検索結果が見つかりませんでした"
   },
   "category": {
     "title": "カテゴリー: {name}",
