@@ -1,5 +1,15 @@
 {
   "HomePage": {
     "title": "こんにちは。世界！"
+  },
+  "globalNav": {
+    "blog": "ブログ",
+    "category": "カテゴリ",
+    "about": "自己紹介"
+  },
+  "themeToggle": {
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム"
   }
 }

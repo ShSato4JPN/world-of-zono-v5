@@ -1,5 +1,15 @@
 {
   "HomePage": {
     "title": "Hello world!"
+  },
+  "globalNav": {
+    "blog": "BLOG",
+    "category": "CATEGORY",
+    "about": "ABOUT"
+  },
+  "themeToggle": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

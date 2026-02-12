@@ -1,18 +1,22 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { LocaleToggle } from "../LocaleToggle";
 import { ThemeToggle } from "../ThemeToggle";
 
 export default function Header() {
+  const t = useTranslations("globalNav");
+
   const navItems = [
     {
-      name: "BLOG",
+      key: "blog",
       href: "/blogs",
     },
     {
-      name: "CATEGORY",
+      key: "category",
       href: "/categories",
     },
     {
-      name: "ABOUT",
+      key: "about",
       href: "/about",
     },
   ];
@@ -24,11 +28,12 @@ export default function Header() {
           <span className="text-xl font-bold">WORLD-OF-ZONO</span>
         </Link>
         <div className="flex items-center gap-8">
-          {navItems.map(({ name, href }) => (
+          {navItems.map(({ key, href }) => (
             <Link href={href} key={href}>
-              <span className="font-bold">{name}</span>
+              <span>{t(key)}</span>
             </Link>
           ))}
+          <LocaleToggle />
           <ThemeToggle />
         </div>
       </div>
