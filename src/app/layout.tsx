@@ -1,5 +1,6 @@
 import MainLayout from "@/components/layout/MainLayout";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -24,11 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MainLayout>{children}</MainLayout>
+        <ThemeProvider>
+          <MainLayout>{children}</MainLayout>
+        </ThemeProvider>
       </body>
     </html>
   );
