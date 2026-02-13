@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { LocaleToggle } from "../LocaleToggle";
-import { ThemeToggle } from "../ThemeToggle";
+import { LocaleToggle } from "./LocaleToggle";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   const t = useTranslations("globalNav");
