@@ -9,9 +9,9 @@ type Props = {
 
 export default function SquaresLayout({ children }: Props) {
   return (
-    <div className="relative h-dvh w-dvw">
+    <div className="relative min-h-dvh w-full">
       {/* 背景アニメーション */}
-      <div className="absolute size-full">
+      <div className="absolute inset-0">
         <Squares
           speed={0.5}
           direction="diagonal"
@@ -19,7 +19,7 @@ export default function SquaresLayout({ children }: Props) {
           squareSize={30}
         />
       </div>
-      <div className="absolute size-full">{children}</div>
+      <div className="relative">{children}</div>
     </div>
   );
 }
