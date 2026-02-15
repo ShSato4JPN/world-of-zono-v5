@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
+import PageProvider from "./provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +25,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider>
       <ThemeProvider>
-        <MainLayout>{children}</MainLayout>
+        <PageProvider>
+          <MainLayout>{children}</MainLayout>
+        </PageProvider>
       </ThemeProvider>
     </NextIntlClientProvider>
   );
