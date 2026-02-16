@@ -41,7 +41,8 @@ const Squares: React.FC<SquaresProps> = ({
       numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
     };
 
-    window.addEventListener("resize", resizeCanvas);
+    const resizeObserver = new ResizeObserver(() => resizeCanvas());
+    resizeObserver.observe(canvas);
     resizeCanvas();
 
     const drawGrid = () => {
@@ -152,7 +153,7 @@ const Squares: React.FC<SquaresProps> = ({
     requestRef.current = requestAnimationFrame(updateAnimation);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      resizeObserver.disconnect();
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);

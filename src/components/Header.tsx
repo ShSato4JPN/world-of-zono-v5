@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import Hamburger from "./Hamburger";
+import Shuffle from "./bits-ui/Shuffle";
 
 const navItems = [
   {
@@ -30,8 +31,23 @@ function MobileHeader() {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between">
-        <div className="font-bold tracking-tight">
-          {env.NEXT_PUBLIC_SITE_NAME}
+        <div className="text-xs lg:font-base font-bold tracking-tight">
+          <Shuffle
+            className="text-xs px-1 py-2 rounded-lg backdrop-blur-[2px]"
+            text={env.NEXT_PUBLIC_SITE_NAME}
+            shuffleDirection="up"
+            duration={0.35}
+            animationMode="evenodd"
+            shuffleTimes={1}
+            ease="power3.out"
+            stagger={0.03}
+            threshold={0.1}
+            triggerOnce={true}
+            triggerOnHover
+            respectReducedMotion={true}
+            loop={true}
+            loopDelay={5}
+          />
         </div>
         <div className="flex gap-4 justify-center">
           <LocaleToggle />
@@ -82,16 +98,30 @@ function PcHeader() {
   const t = useTranslations("globalNav");
 
   return (
-    <nav className="flex items-center justify-between backdrop-blur-[3px] py-4 px-10 border-b">
+    <nav className="flex items-center justify-between backdrop-blur-[3px] py-4 px-50 border-b">
       <Link href="/">
-        <span className="text-xl font-bold tracking-tight">
-          {env.NEXT_PUBLIC_SITE_NAME}
+        <span className="text-lg font-bold">
+          <Shuffle
+            text={env.NEXT_PUBLIC_SITE_NAME}
+            shuffleDirection="up"
+            duration={0.35}
+            animationMode="evenodd"
+            shuffleTimes={1}
+            ease="power3.out"
+            stagger={0.03}
+            threshold={0.1}
+            triggerOnce={true}
+            triggerOnHover
+            respectReducedMotion={true}
+            loop={true}
+            loopDelay={5}
+          />
         </span>
       </Link>
       <div className="flex items-center gap-8">
         {navItems.map(({ key, href }) => (
           <Link href={href} key={href}>
-            <span>{t(key)}</span>
+            <span className="text-sm">{t(key)}</span>
           </Link>
         ))}
         <LocaleToggle />
@@ -103,7 +133,7 @@ function PcHeader() {
 
 export default function Header() {
   return (
-    <header>
+    <header className="sticky top-0 z-50">
       <DeviceSwitcher mobile={<MobileHeader />} pc={<PcHeader />} />
     </header>
   );
