@@ -1,9 +1,5 @@
-import { ErrorBoundary } from "react-error-boundary";
+import Blogs from "./_components/blogs";
 
-export default function Page() {
-  return (
-    <ErrorBoundary fallback={<div>エラーが発生しました。</div>}>
-      <div>page</div>
-    </ErrorBoundary>
-  );
+export default async function Page() {
+  return <Blogs />;
 }
