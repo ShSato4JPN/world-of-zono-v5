@@ -14,5 +14,11 @@
   },
   "error": {
     "fallback": "An error has occurred 🫠"
+  },
+  "blog": {
+    "backToBlog": "Back to Blog",
+    "minRead": "{minutes} min read",
+    "nextPost": "Next Post",
+    "prevPost": "Previous Post"
   }
 }

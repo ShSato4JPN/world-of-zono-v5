@@ -14,5 +14,11 @@
   },
   "error": {
     "fallback": "エラーが発生しました 🫠"
+  },
+  "blog": {
+    "backToBlog": "ブログに戻る",
+    "minRead": "{minutes}分で読めます",
+    "nextPost": "次の記事",
+    "prevPost": "前の記事"
   }
 }
