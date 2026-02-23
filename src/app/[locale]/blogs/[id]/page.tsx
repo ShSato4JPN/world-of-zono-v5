@@ -1,12 +1,8 @@
 import { use } from "react";
-import { ErrorBoundary } from "react-error-boundary";
+import Blog from "./_components/blog";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
 
-  return (
-    <ErrorBoundary fallback={<div>エラーが発生しました。</div>}>
-      <div>{id}</div>
-    </ErrorBoundary>
-  );
+  return <Blog id={id} />;
 }
