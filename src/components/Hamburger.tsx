@@ -1,25 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 
-import { ReactNode } from "react";
 import { Button } from "./ui/button";
-
-type FadeInProps = {
-  children: ReactNode;
-};
-
-function FadeIn({ children }: FadeInProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      key="hamburger-button"
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 type Props = {
   isOpen: boolean;

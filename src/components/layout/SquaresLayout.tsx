@@ -9,7 +9,7 @@ type Props = {
 
 export default function SquaresLayout({ children }: Props) {
   return (
-    <div className="relative min-h-dvh w-full">
+    <div className="relative min-h-dvh grid">
       {/* 背景アニメーション */}
       <div className="absolute inset-0">
         <Squares
