@@ -20,5 +20,11 @@
     "minRead": "{minutes}分で読めます",
     "nextPost": "次の記事",
     "prevPost": "前の記事"
+  },
+  "category": {
+    "notYet": "準備中！"
+  },
+  "about": {
+    "notYet": "準備中！"
   }
 }

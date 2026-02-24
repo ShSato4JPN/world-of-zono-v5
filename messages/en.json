@@ -20,5 +20,11 @@
     "minRead": "{minutes} min read",
     "nextPost": "Next Post",
     "prevPost": "Previous Post"
+  },
+  "category": {
+    "notYet": "Coming soon!"
+  },
+  "about": {
+    "notYet": "Coming soon!"
   }
 }
