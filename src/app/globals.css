@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is([data-theme="dark"] *));
 
 @theme inline {
   --color-background: var(--background);
@@ -45,10 +45,14 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  /* カスタム用スタイル */
+  --focus: oklch(70.452% 0.16188 248.861 / 0.265);
+  --color-article-muted: var(--article-muted);
 }
 
 :root {
   --radius: 0.625rem;
+  --article-muted: oklch(0.556 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -113,7 +117,6 @@
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
@@ -123,4 +126,283 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Article Content - Zenn-inspired typography */
+.article-content {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .article-content {
+    font-size: 0.875rem;
+    line-height: 1.75;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-content {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+}
+
+.article-content p {
+  margin: 1em 0;
+}
+
+.article-content h2 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+@media (min-width: 640px) {
+  .article-content h2 {
+    font-size: 1rem;
+    margin-top: 1.75em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-content h2 {
+    font-size: 1.125rem;
+    margin-top: 2em;
+  }
+}
+
+[data-theme="dark"] .article-content h2 {
+  border-bottom-color: #333;
+}
+
+.article-content h3 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  margin-top: 1.25em;
+  margin-bottom: 0.4em;
+  padding-left: 0.6em;
+  border-left: 3px solid #3ea8ff;
+}
+
+@media (min-width: 640px) {
+  .article-content h3 {
+    font-size: 0.875rem;
+    margin-top: 1.5em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-content h3 {
+    font-size: 0.9375rem;
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.article-content h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-bottom: 0.35em;
+}
+
+@media (min-width: 640px) {
+  .article-content h4 {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-content h4 {
+    font-size: 0.875rem;
+    margin-top: 1.25em;
+    margin-bottom: 0.4em;
+  }
+}
+
+.article-content a {
+  color: #3ea8ff;
+  text-decoration: none;
+}
+
+.article-content a:hover {
+  text-decoration: underline;
+}
+
+.article-content strong {
+  font-weight: 700;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1em 0;
+  padding-left: 1.25em;
+}
+
+@media (min-width: 640px) {
+  .article-content ul,
+  .article-content ol {
+    margin: 1.5em 0;
+    padding-left: 1.5em;
+  }
+}
+
+.article-content li {
+  margin: 0.4em 0;
+}
+
+@media (min-width: 640px) {
+  .article-content li {
+    margin: 0.5em 0;
+  }
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: decimal;
+}
+
+.article-content blockquote {
+  margin: 1.5em 0;
+  padding: 0.5em 1em;
+  border-left: 4px solid #3ea8ff;
+  background: #f5f5f5;
+  color: #666;
+}
+
+[data-theme="dark"] .article-content blockquote {
+  background: #1a1a1a;
+  color: #aaa;
+}
+
+.article-content code:not(pre code) {
+  background: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+[data-theme="dark"] .article-content code:not(pre code) {
+  background: #2d2d2d;
+}
+
+/* MicroCMS のファイル名付きコードブロック */
+.article-content div[data-filename] {
+  margin: 1.5em 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.article-content div[data-filename]::before {
+  content: attr(data-filename);
+  display: block;
+  background: #1a2a3a;
+  color: #8ba5c0;
+  font-size: 0.75rem;
+  font-family: var(--font-geist-mono), monospace;
+  padding: 0.4em 1em;
+  border-bottom: 1px solid #0d1f2d;
+}
+
+.article-content div[data-filename] pre,
+.article-content div[data-filename] .shiki {
+  margin: 0;
+  border-radius: 0;
+}
+
+.article-content pre {
+  margin: 1.5em 0;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .article-content pre {
+    font-size: 0.875rem;
+  }
+}
+
+.article-content .shiki {
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .article-content .shiki {
+    font-size: 0.875rem;
+  }
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5em 0;
+  cursor: zoom-in;
+}
+
+.article-content hr {
+  margin: 2em 0;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+}
+
+[data-theme="dark"] .article-content hr {
+  border-top-color: #333;
+}
+
+.article-content table {
+  width: 100%;
+  margin: 1.5em 0;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+
+.article-content th,
+.article-content td {
+  padding: 0.75em 1em;
+  border: 1px solid #e5e5e5;
+  text-align: left;
+}
+
+[data-theme="dark"] .article-content th,
+[data-theme="dark"] .article-content td {
+  border-color: #333;
+}
+
+.article-content th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .article-content th {
+  background: #1a1a1a;
 }
