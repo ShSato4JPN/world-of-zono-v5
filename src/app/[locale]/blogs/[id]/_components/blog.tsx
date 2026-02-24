@@ -5,6 +5,7 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
+import { use } from "react";
 import ArticleContent from "./article/content";
 import ArticleHeader from "./article/header";
 import ArticleLayout from "./article/layout";
@@ -27,15 +28,15 @@ type Props = {
   id: string;
 };
 
-export default async function Blog({ id }: Props) {
-  const { dehydratedState, queryClient } = await preloadBlogData(id);
+export default function Blog({ id }: Props) {
+  const { dehydratedState, queryClient } = use(preloadBlogData(id));
   const blog = queryClient.getQueryData(getBlogQueryOptions(id).queryKey);
 
   if (!blog?.content) return <div>Blog not found</div>;
 
   const { title, publishedAt, content, category } = blog;
 
-  const highlightedContent = await highlightCode(content);
+  const highlightedContent = use(highlightCode(content));
 
   return (
     <HydrationBoundary state={dehydratedState}>
