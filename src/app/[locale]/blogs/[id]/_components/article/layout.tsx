@@ -10,8 +10,8 @@ type Props = {
 export default function ArticleLayout({ nav, header, content, footer }: Props) {
   return (
     <article className="flex flex-col gap-4 mx-auto w-full max-w-4xl overflow-x-hidden px-1 lg:mt-4">
-      <div className="py-2 px-2 lg:px-10 backdrop-blur-xs shadow-lg rounded-lg border">
-        {nav}
+      {nav}
+      <div className="py-4 px-2 lg:p-10 backdrop-blur-xs shadow-lg rounded-lg border">
         {header}
         {content}
         {footer}

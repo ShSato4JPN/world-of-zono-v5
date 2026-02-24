@@ -44,18 +44,16 @@ export default function ArticleHeader({
       <>
         {category && category.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
-            {category
-              .filter((cat) => cat.name !== "メモ")
-              .map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={`/categories/${cat.id}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
-                >
-                  <Tag className="h-3.5 w-3.5" />
-                  {cat.name}
-                </Link>
-              ))}
+            {category.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/categories/${cat.id}`}
+                className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
+              >
+                <Tag className="h-3.5 w-3.5" />
+                {cat.name}
+              </Link>
+            ))}
           </div>
         )}
       </>

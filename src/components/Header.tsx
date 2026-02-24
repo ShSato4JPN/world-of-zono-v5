@@ -31,24 +31,22 @@ function MobileHeader() {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between">
-        <div className="text-xs lg:font-base font-bold tracking-tight">
-          <Shuffle
-            className="text-xs px-1 py-2 rounded-lg backdrop-blur-[2px]"
-            text={env.NEXT_PUBLIC_SITE_NAME}
-            shuffleDirection="up"
-            duration={0.35}
-            animationMode="evenodd"
-            shuffleTimes={1}
-            ease="power3.out"
-            stagger={0.03}
-            threshold={0.1}
-            triggerOnce={true}
-            triggerOnHover
-            respectReducedMotion={true}
-            loop={true}
-            loopDelay={5}
-          />
-        </div>
+        <Shuffle
+          className="font-bold tracking-tight backdrop-blur-xs rounded-lg"
+          text={env.NEXT_PUBLIC_SITE_NAME}
+          shuffleDirection="up"
+          duration={0.35}
+          animationMode="evenodd"
+          shuffleTimes={1}
+          ease="power3.out"
+          stagger={0.03}
+          threshold={0.1}
+          triggerOnce={true}
+          triggerOnHover
+          respectReducedMotion={true}
+          loop={true}
+          loopDelay={5}
+        />
         <div className="flex gap-4 justify-center">
           <LocaleToggle />
           <ThemeToggle />
