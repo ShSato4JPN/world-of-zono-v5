@@ -1,55 +1,58 @@
-import { client } from "@/lib/microcms";
-import type { Blog } from "@/types/microcms";
-import BlogArticle from "./blog-article";
+import { getBlogQueryOptions } from "@/features/blogs/api/get-blog";
+import { highlightCode } from "@/lib/highlight";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import ArticleContent from "./article/content";
+import ArticleHeader from "./article/header";
+import ArticleLayout from "./article/layout";
+import ArticleNav from "./article/nav";
+
+const preloadBlogData = async (id: string) => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(getBlogQueryOptions(id));
+
+  const dehydratedState = dehydrate(queryClient);
+
+  return {
+    dehydratedState,
+    queryClient,
+  };
+};
 
 type Props = {
   id: string;
 };
 
-type AdjacentBlogs = {
-  next: Blog | null;
-  prev: Blog | null;
-};
-
-async function getAdjacentBlogs(currentId: string): Promise<AdjacentBlogs> {
-  try {
-    const response = await client.getList<Blog>({
-      endpoint: "blogs",
-      queries: { limit: 100, fields: "id,title" },
-    });
-
-    const blogs = response.contents;
-    const currentIndex = blogs.findIndex((b) => b.id === currentId);
-
-    return {
-      next: currentIndex > 0 ? blogs[currentIndex - 1] : null,
-      prev:
-        currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : null,
-    };
-  } catch {
-    return { next: null, prev: null };
-  }
-}
-
 export default async function Blog({ id }: Props) {
-  const res = await fetch(`${process.env.SITE_URL}/api/blogs/${id}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-  });
-  const blog = (await res.json()) as Blog;
+  const { dehydratedState, queryClient } = await preloadBlogData(id);
+  const blog = queryClient.getQueryData(getBlogQueryOptions(id).queryKey);
 
-  const [adjacentBlogs, { highlightCode }] = await Promise.all([
-    getAdjacentBlogs(id),
-    import("@/lib/highlight"),
-  ]);
+  if (!blog?.content) return <div>Blog not found</div>;
 
-  const highlightedContent = await highlightCode(blog.content || "");
+  const { title, publishedAt, content, category } = blog;
+
+  const highlightedContent = await highlightCode(content);
 
   return (
-    <BlogArticle
-      blog={blog}
-      highlightedContent={highlightedContent}
-      adjacentBlogs={adjacentBlogs}
-    />
+    <HydrationBoundary state={dehydratedState}>
+      <ArticleLayout
+        nav={<ArticleNav />}
+        header={
+          <ArticleHeader
+            title={title}
+            publishedAt={publishedAt}
+            content={content}
+            category={category}
+          />
+        }
+        content={<ArticleContent content={highlightedContent} />}
+        footer={<div></div>}
+        // footer={<ArticleFooter />}
+      />
+    </HydrationBoundary>
   );
 }

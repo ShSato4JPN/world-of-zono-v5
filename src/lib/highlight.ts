@@ -1,5 +1,15 @@
 import { type BundledLanguage, createHighlighter } from "shiki";
 
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ");
+}
+
 const highlighter = await createHighlighter({
   themes: ["night-owl"],
   langs: [
@@ -14,8 +24,6 @@ const highlighter = await createHighlighter({
     "bash",
     "shell",
     "python",
-    "rust",
-    "go",
     "sql",
     "yaml",
     "dockerfile",
@@ -27,9 +35,7 @@ export async function highlightCode(html: string): Promise<string> {
     /<pre><code(?:\s+class="language-(\w+)")?>([\s\S]*?)<\/code><\/pre>/g;
 
   let result = html;
-  let match: RegExpExecArray | null = codeBlockRegex.exec(html);
-
-  while (match !== null) {
+  for (const match of html.matchAll(codeBlockRegex)) {
     const [fullMatch, lang, code] = match;
     const decodedCode = decodeHtmlEntities(code);
     const language = (lang || "plaintext") as BundledLanguage;
@@ -39,24 +45,15 @@ export async function highlightCode(html: string): Promise<string> {
         lang: language,
         theme: "night-owl",
       });
-
       result = result.replace(fullMatch, highlighted);
     } catch {
-      // If language is not supported, keep original
+      const highlighted = highlighter.codeToHtml(decodedCode, {
+        lang: "plaintext",
+        theme: "night-owl",
+      });
+      result = result.replace(fullMatch, highlighted);
     }
-
-    match = codeBlockRegex.exec(html);
   }
 
   return result;
-}
-
-function decodeHtmlEntities(text: string): string {
-  return text
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ");
 }

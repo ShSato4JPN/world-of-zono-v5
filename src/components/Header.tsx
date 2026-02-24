@@ -58,7 +58,7 @@ function MobileHeader() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 left-0 w-dvw h-dvh bg-background/10 backdrop-blur-[3px] flex items-center justify-center"
+            className="fixed top-0 left-0 w-dvw h-dvh bg-background/10 backdrop-blur-xs flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{
@@ -98,7 +98,7 @@ function PcHeader() {
   const t = useTranslations("globalNav");
 
   return (
-    <nav className="flex items-center justify-between backdrop-blur-[3px] py-4 px-50 border-b">
+    <nav className="flex items-center justify-between backdrop-blur-xs py-4 px-50 border-b">
       <Link href="/">
         <span className="text-lg font-bold">
           <Shuffle

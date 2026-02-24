@@ -45,9 +45,6 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  /* カスタム用スタイル */
-  --focus: oklch(70.452% 0.16188 248.861 / 0.265);
-  --color-article-muted: var(--article-muted);
 }
 
 :root {
@@ -139,7 +136,6 @@ p {
   margin: 0;
 }
 
-/* Article Content - Zenn-inspired typography */
 .article-content {
   font-size: 0.75rem;
   line-height: 1.7;

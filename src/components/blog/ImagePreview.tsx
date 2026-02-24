@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Props = {
   src: string;
@@ -12,6 +13,12 @@ type Props = {
 };
 
 export function ImagePreview({ src, alt, isOpen, onClose }: Props) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -32,7 +39,9 @@ export function ImagePreview({ src, alt, isOpen, onClose }: Props) {
     };
   }, [isOpen, handleKeyDown]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -58,7 +67,6 @@ export function ImagePreview({ src, alt, isOpen, onClose }: Props) {
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* biome-ignore lint/performance/noImgElement: CMS dynamic images */}
             <img
               src={src}
               alt={alt}
@@ -67,6 +75,7 @@ export function ImagePreview({ src, alt, isOpen, onClose }: Props) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }
